@@ -89,7 +89,7 @@ const currentPath = Astro.url.pathname;
   <!-- Mobile Menu Dropdown -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-900 border-t border-zinc-800 animate-fadeIn shadow-2xl h-screen z-[100]"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-900 border-t border-zinc-800 animate-fadeIn shadow-2xl h-screen z-100"
   >
     <div class="px-4 pt-4 pb-8 space-y-2">
       {
@@ -166,6 +166,16 @@ const currentPath = Astro.url.pathname;
         menuIcon.classList.remove("hidden");
         closeIcon.classList.add("hidden");
       }
+    });
+
+    // Close menu when a link is clicked
+    const menuLinks = mobileMenu?.querySelectorAll("a");
+    menuLinks?.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      });
     });
   }
 
