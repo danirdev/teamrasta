@@ -1,0 +1,165 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { CheckCircle, Star, HelpCircle } from "lucide-astro";
+
+const WHATSAPP_NUMBER = "5493880000000";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Team%20Rasta,%20quiero%20más%20info%20sobre%20las%20clases!`;
+---
+
+<Layout>
+  <section
+    class="py-24 bg-zinc-900 border-t border-zinc-800 min-h-screen pt-32 animate-fadeIn flex flex-col items-center justify-center"
+  >
+    <div class="max-w-6xl mx-auto px-4 text-center w-full">
+      <h2
+        class="text-4xl md:text-5xl font-black text-white italic uppercase mb-2"
+      >
+        Planes Mensuales
+      </h2>
+      <p class="text-zinc-400 mb-16 max-w-2xl mx-auto">
+        Elegí la opción que mejor se adapte a tus objetivos y empezá a entrenar
+        hoy mismo.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div
+          class="bg-zinc-950 border border-zinc-800 p-8 rounded-lg flex flex-col relative group hover:border-lime-500/50 transition-all"
+        >
+          <h3
+            class="text-zinc-400 font-bold uppercase tracking-widest text-sm mb-4"
+          >
+            Inicial
+          </h3>
+          <div class="text-white font-black text-4xl mb-2 italic">$20.000</div>
+          <p class="text-lime-400 font-bold text-lg mb-8">2 Veces x Semana</p>
+          <ul class="text-left space-y-4 mb-8 flex-grow text-zinc-300 text-sm">
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-500 mr-2 shrink-0" size={18} /> Acceso
+              a clases grupales
+            </li>
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-500 mr-2 shrink-0" size={18} /> Días a
+              elección
+            </li>
+          </ul>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            class="block text-center w-full py-3 border border-zinc-700 text-white font-bold uppercase hover:bg-lime-500 hover:text-black hover:border-lime-500 transition-colors"
+            >Elegir Plan</a
+          >
+        </div>
+
+        <div
+          class="bg-zinc-950 border border-zinc-800 p-8 rounded-lg flex flex-col relative group hover:border-lime-500/50 transition-all"
+        >
+          <h3
+            class="text-zinc-400 font-bold uppercase tracking-widest text-sm mb-4"
+          >
+            Intermedio
+          </h3>
+          <div class="text-white font-black text-4xl mb-2 italic">$30.000</div>
+          <p class="text-lime-400 font-bold text-lg mb-8">3 Veces x Semana</p>
+          <ul class="text-left space-y-4 mb-8 flex-grow text-zinc-300 text-sm">
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-500 mr-2 shrink-0" size={18} /> Mayor
+              constancia
+            </li>
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-500 mr-2 shrink-0" size={18} /> Resultados
+              visibles
+            </li>
+          </ul>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            class="block text-center w-full py-3 border border-zinc-700 text-white font-bold uppercase hover:bg-lime-500 hover:text-black hover:border-lime-500 transition-colors"
+            >Elegir Plan</a
+          >
+        </div>
+
+        <div
+          class="bg-zinc-900 border-2 border-lime-500 p-8 rounded-lg flex flex-col relative transform md:-translate-y-4 shadow-2xl shadow-lime-500/20"
+        >
+          <div
+            class="absolute top-0 right-0 bg-lime-500 text-black text-xs font-bold px-3 py-1 uppercase flex items-center gap-1"
+          >
+            <Star size={12} class="fill-black" /> Recomendado
+          </div>
+          <h3
+            class="text-white font-bold uppercase tracking-widest text-sm mb-4"
+          >
+            Team Rasta Full
+          </h3>
+          <div class="text-white font-black text-5xl mb-2 italic text-lime-400">
+            $40.000
+          </div>
+          <p class="text-white font-bold text-lg mb-8">Pase Libre</p>
+          <ul class="text-left space-y-4 mb-8 flex-grow text-zinc-300 text-sm">
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-400 mr-2 shrink-0" size={18} /> Acceso
+              ILIMITADO
+            </li>
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-400 mr-2 shrink-0" size={18} /> Todas
+              las disciplinas
+            </li>
+            <li class="flex items-start">
+              <CheckCircle class="text-lime-400 mr-2 shrink-0" size={18} /> Entrenamiento
+              máximo
+            </li>
+          </ul>
+          <a
+            href={WHATSAPP_LINK}
+            target="_blank"
+            rel="noreferrer"
+            class="block text-center w-full py-3 bg-lime-500 text-black font-black uppercase hover:bg-white transition-colors shadow-lg"
+            >Quiero este Plan</a
+          >
+        </div>
+      </div>
+      <p class="mt-8 text-zinc-500 text-sm">
+        * Los precios son mensuales. Aceptamos efectivo y transferencia.
+      </p>
+
+      <div class="mt-20 max-w-3xl mx-auto w-full">
+        <h3
+          class="text-2xl font-black text-white italic uppercase mb-8 text-center flex items-center justify-center gap-3"
+        >
+          <HelpCircle class="text-lime-400" /> Preguntas Frecuentes
+        </h3>
+        <div class="space-y-4">
+          {
+            [
+              {
+                q: "¿Qué necesito para la primera clase?",
+                a: "Solo ropa cómoda deportiva y una botella de agua. Nosotros tenemos equipamiento para prestarte si es tu primera vez.",
+              },
+              {
+                q: "¿Necesito experiencia previa?",
+                a: "¡Para nada! Tenemos clases para todos los niveles, desde principiantes hasta competidores.",
+              },
+              {
+                q: "¿Se paga matrícula?",
+                a: "No cobramos matrícula de inscripción, solo el mes por adelantado.",
+              },
+              {
+                q: "¿Puedo recuperar clases?",
+                a: "Sí, podés recuperar dentro del mismo mes en otros horarios disponibles.",
+              },
+            ].map((item) => (
+              <div class="bg-zinc-950 border border-zinc-800 p-5 rounded hover:border-lime-500/30 transition-colors text-left">
+                <h4 class="text-lime-400 font-bold uppercase text-sm mb-2">
+                  {item.q}
+                </h4>
+                <p class="text-zinc-400 text-sm">{item.a}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

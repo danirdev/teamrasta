@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { MapPin, Instagram, MessageCircle } from "lucide-astro";
+
+const WHATSAPP_NUMBER = "5493880000000";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Team%20Rasta,%20quiero%20más%20info%20sobre%20las%20clases!`;
+---
+
+<Layout>
+  <section
+    class="relative py-24 bg-lime-500 overflow-hidden min-h-screen pt-32 animate-fadeIn flex flex-col justify-center"
+  >
+    <div
+      class="absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"
+    >
+    </div>
+
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full mb-12"
+    >
+      <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
+        <div class="text-black">
+          <h2
+            class="text-4xl md:text-5xl font-black italic uppercase mb-6 leading-tight"
+          >
+            ¿Listo para subir al tatami?
+          </h2>
+          <p class="text-lg font-medium mb-10 max-w-md opacity-80">
+            La primera clase es de prueba. Vení a conocer nuestras instalaciones
+            en Monterrico y unite al Team Rasta.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-center group">
+              <div
+                class="bg-black text-lime-400 p-3 rounded-full mr-4 group-hover:scale-110 transition-transform"
+              >
+                <MapPin class="h-6 w-6" />
+              </div>
+              <div>
+                <p class="font-bold text-lg">Ubicación</p>
+                <p class="font-medium">Monterrico, Jujuy, Argentina</p>
+              </div>
+            </div>
+            <div class="flex items-center group">
+              <div
+                class="bg-black text-lime-400 p-3 rounded-full mr-4 group-hover:scale-110 transition-transform"
+              >
+                <Instagram class="h-6 w-6" />
+              </div>
+              <div>
+                <p class="font-bold text-lg">Instagram</p>
+                <a
+                  href="https://www.instagram.com/dojorasta_monterrico/"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="font-medium hover:underline"
+                >
+                  @dojorasta_monterrico
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center group cursor-pointer">
+              <div
+                class="bg-black text-lime-400 p-3 rounded-full mr-4 group-hover:scale-110 transition-transform"
+              >
+                <MessageCircle class="h-6 w-6" />
+              </div>
+              <div>
+                <p class="font-bold text-lg">WhatsApp</p>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="font-medium hover:underline"
+                >
+                  Escribinos por WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ContactForm />
+      </div>
+    </div>
+
+    <div
+      class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-12"
+    >
+      <div
+        class="bg-black border-4 border-lime-500 shadow-2xl overflow-hidden relative h-80 lg:h-96 w-full"
+      >
+        <div
+          class="absolute top-0 left-0 bg-lime-500 text-black font-black uppercase text-xs px-4 py-1 z-20"
+        >
+          Dojo Team Rasta HQ
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14569.25624329245!2d-65.17622835!3d-24.3516667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bdf0d0a51981d%3A0x629c450519f1090!2sMonterrico%2C%20Jujuy!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
+          width="100%"
+          height="100%"
+          style="border: 0; filter: grayscale(100%) invert(92%) contrast(83%);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Team Rasta"></iframe>
+        <div
+          class="absolute inset-0 bg-lime-500/10 pointer-events-none mix-blend-overlay"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

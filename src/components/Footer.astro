@@ -1,0 +1,49 @@
+---
+import { MessageCircle, Instagram, Facebook } from "lucide-astro";
+
+const WHATSAPP_NUMBER = "5493880000000";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Team%20Rasta,%20quiero%20más%20info%20sobre%20las%20clases!`;
+---
+
+<footer class="bg-zinc-950 text-zinc-500 py-12 border-t border-zinc-900">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center"
+  >
+    <div class="mb-4 md:mb-0 text-center md:text-left">
+      <span
+        class="text-xl font-black tracking-tighter italic uppercase text-white block"
+      >
+        TEAM <span class="text-lime-500">RASTA</span>
+      </span>
+      <p class="text-xs mt-2 uppercase tracking-wider">
+        Escuela de Artes Marciales • Monterrico
+      </p>
+    </div>
+
+    <div class="flex space-x-6 mb-4 md:mb-0">
+      <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noreferrer"
+        class="text-zinc-400 hover:text-lime-400 transition-colors"
+      >
+        <MessageCircle size={24} />
+      </a>
+      <a
+        href="https://www.instagram.com/dojorasta_monterrico/"
+        target="_blank"
+        rel="noreferrer"
+        class="text-zinc-400 hover:text-lime-400 transition-colors"
+      >
+        <Instagram size={24} />
+      </a>
+      <a href="#" class="text-zinc-400 hover:text-lime-400 transition-colors">
+        <Facebook size={24} />
+      </a>
+    </div>
+
+    <div class="text-xs text-zinc-700">
+      &copy; {new Date().getFullYear()} Team Rasta
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Activity, Clock } from "lucide-astro";
+---
+
+<Layout>
+  <section
+    class="py-24 bg-zinc-900 border-t border-zinc-800 min-h-screen pt-32 animate-fadeIn flex flex-col items-center"
+  >
+    <div class="max-w-6xl mx-auto px-4 text-center w-full">
+      <h2
+        class="text-4xl md:text-5xl font-black text-white italic uppercase mb-2"
+      >
+        Cronograma Semanal
+      </h2>
+      <p class="text-zinc-400 mb-12 max-w-2xl mx-auto">
+        Planifica tu entrenamiento. Conocé qué trabajamos cada día y elegí el
+        turno que mejor se adapte a vos.
+      </p>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        {/* COLUMN 1: Activity by Day */}
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <Activity class="text-lime-400" size={28} />
+            <h3 class="text-2xl font-black text-white italic uppercase">
+              Actividad por Día
+            </h3>
+          </div>
+
+          <div
+            class="bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden"
+          >
+            {
+              [
+                {
+                  day: "Lunes",
+                  activity: "Lucha",
+                  desc: "Técnicas de derribo y control",
+                },
+                {
+                  day: "Martes",
+                  activity: "Pliometría y Fuerza",
+                  desc: "Potencia explosiva y acondicionamiento",
+                },
+                {
+                  day: "Miércoles",
+                  activity: "Kick Boxing K1",
+                  desc: "Striking, puños y patadas",
+                },
+                {
+                  day: "Jueves",
+                  activity: "Circuito Cardio y MMA",
+                  desc: "Resistencia y mezcla de artes marciales",
+                },
+                {
+                  day: "Viernes",
+                  activity: "Grappling y Mov. Animal",
+                  desc: "Lucha de suelo y fluidez corporal",
+                },
+                {
+                  day: "Sábado",
+                  activity: "Sparring",
+                  desc: "Práctica de combate controlada",
+                },
+              ].map((item) => (
+                <div class="flex border-b border-zinc-900 last:border-0 hover:bg-zinc-900/50 transition-colors">
+                  <div class="w-32 bg-zinc-900/30 p-4 flex items-center justify-center border-r border-zinc-900">
+                    <span class="text-lime-400 font-bold uppercase text-sm">
+                      {item.day}
+                    </span>
+                  </div>
+                  <div class="p-4 text-left">
+                    <span class="block text-white font-bold text-lg">
+                      {item.activity}
+                    </span>
+                    <span class="block text-zinc-500 text-xs">{item.desc}</span>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        {/* COLUMN 2: Time Slots */}
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <Clock class="text-lime-400" size={28} />
+            <h3 class="text-2xl font-black text-white italic uppercase">
+              Turnos y Horarios
+            </h3>
+          </div>
+
+          <div class="space-y-3">
+            {
+              [
+                {
+                  time: "09:00 - 10:30",
+                  level: "Avanzados",
+                  color: "text-zinc-300",
+                },
+                {
+                  time: "11:00 - 12:00",
+                  level: "Entrenamiento General",
+                  color: "text-zinc-300",
+                },
+                {
+                  time: "16:00 - 17:30",
+                  level: "Entrenamiento General",
+                  color: "text-zinc-300",
+                },
+                {
+                  time: "18:00 - 19:00",
+                  level: "Entrenamiento General",
+                  color: "text-zinc-300",
+                },
+                {
+                  time: "19:00 - 20:00",
+                  level: "NIÑOS",
+                  color: "text-lime-400 font-black",
+                },
+                {
+                  time: "20:00 - 21:00",
+                  level: "Principiantes",
+                  color: "text-white font-bold",
+                },
+                {
+                  time: "21:00 - 22:30",
+                  level: "Avanzados",
+                  color: "text-lime-400 font-bold",
+                },
+                {
+                  time: "22:30 - 23:00",
+                  level: "Categoría SR (+40 años)",
+                  color: "text-zinc-400 italic",
+                },
+              ].map((slot) => (
+                <div class="bg-zinc-950 border border-zinc-800 p-4 rounded flex justify-between items-center hover:border-lime-500/30 transition-all">
+                  <div class="flex items-center gap-3">
+                    <div class="bg-zinc-900 p-1.5 rounded text-lime-400">
+                      <Clock size={16} />
+                    </div>
+                    <span class="text-white font-mono text-lg tracking-tight">
+                      {slot.time}
+                    </span>
+                  </div>
+                  <span
+                    class:list={[
+                      "uppercase text-sm tracking-wider",
+                      slot.color,
+                    ]}
+                  >
+                    {slot.level}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,175 @@
+---
+import { Menu, X } from "lucide-astro";
+
+const WHATSAPP_NUMBER = "5493880000000";
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Team%20Rasta,%20quiero%20más%20info%20sobre%20las%20clases!`;
+
+const navLinks = [
+  { href: "/", name: "Inicio" },
+  { href: "/horarios", name: "Horarios" },
+  { href: "/planes", name: "Planes" },
+  { href: "/about", name: "El Dojo" },
+  { href: "/contacto", name: "Contacto" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  id="main-navbar"
+  class="fixed w-full z-50 transition-all duration-500 border-b border-transparent left-0 top-0 py-6 mt-10 md:mt-12 bg-transparent"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center">
+      <!-- Logo Text -->
+      <a
+        href="/"
+        class="flex-shrink-0 flex items-center gap-2 cursor-pointer no-underline"
+      >
+        <span
+          class="text-2xl font-black tracking-tighter italic uppercase text-white hover:text-lime-400 transition-colors"
+        >
+          TEAM <span
+            class="text-lime-400 drop-shadow-[0_0_8px_rgba(163,230,53,0.5)]"
+            >RASTA</span
+          >
+        </span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 items-center">
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "text-sm font-bold uppercase tracking-wider transition-all relative group no-underline",
+                currentPath === link.href ||
+                (link.href !== "/" && currentPath.startsWith(link.href))
+                  ? "text-lime-400"
+                  : "text-zinc-300 hover:text-lime-400",
+              ]}
+            >
+              {link.name}
+              <span
+                class:list={[
+                  "absolute -bottom-1 left-0 h-0.5 bg-lime-400 transition-all duration-300",
+                  currentPath === link.href ||
+                  (link.href !== "/" && currentPath.startsWith(link.href))
+                    ? "w-full"
+                    : "w-0 group-hover:w-full",
+                ]}
+              />
+            </a>
+          ))
+        }
+        <a
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noreferrer"
+          class="bg-lime-500 text-black px-6 py-2.5 rounded-sm skew-x-[-10deg] text-sm font-bold uppercase hover:bg-lime-400 transition-all shadow-[0_0_15px_rgba(132,204,22,0.4)] hover:shadow-[0_0_20px_rgba(132,204,22,0.6)] no-underline"
+        >
+          <span class="skew-x-[10deg] inline-block">Unirse Ahora</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button
+          id="mobile-menu-btn"
+          class="text-zinc-100 hover:text-lime-400 focus:outline-none"
+        >
+          <Menu id="menu-icon" size={28} />
+          <X id="close-icon" size={28} class="hidden" />
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 w-full bg-zinc-900 border-t border-zinc-800 animate-fadeIn shadow-2xl h-screen z-[100]"
+  >
+    <div class="px-4 pt-4 pb-8 space-y-2">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "block w-full text-left px-4 py-4 rounded-lg text-lg font-bold uppercase tracking-wide border-l-4 transition-all no-underline",
+              currentPath === link.href
+                ? "border-lime-400 text-lime-400 bg-zinc-800/50"
+                : "border-transparent text-zinc-300 hover:text-lime-400 hover:bg-zinc-800/30",
+            ]}
+          >
+            {link.name}
+          </a>
+        ))
+      }
+      <div class="pt-4 px-2">
+        <a
+          href={WHATSAPP_LINK}
+          target="_blank"
+          rel="noreferrer"
+          class="block w-full text-center bg-lime-500 text-black px-5 py-4 rounded font-bold uppercase tracking-wider hover:bg-lime-400 no-underline"
+        >
+          Empezar a Entrenar
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function initNavbar() {
+    const navbar = document.getElementById("main-navbar");
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    // Scroll Effect
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        navbar.classList.remove("py-6", "mt-10", "md:mt-12", "bg-transparent");
+        navbar.classList.add(
+          "py-3",
+          "bg-zinc-950/95",
+          "backdrop-blur-md",
+          "border-zinc-800",
+          "shadow-xl",
+          "shadow-lime-900/10",
+        );
+      } else {
+        navbar.classList.add("py-6", "mt-10", "md:mt-12", "bg-transparent");
+        navbar.classList.remove(
+          "py-3",
+          "bg-zinc-950/95",
+          "backdrop-blur-md",
+          "border-zinc-800",
+          "shadow-xl",
+          "shadow-lime-900/10",
+        );
+      }
+    });
+
+    // Mobile Menu Toggle
+    mobileMenuBtn?.addEventListener("click", () => {
+      const isHidden = mobileMenu.classList.contains("hidden");
+      if (isHidden) {
+        mobileMenu.classList.remove("hidden");
+        menuIcon.classList.add("hidden");
+        closeIcon.classList.remove("hidden");
+      } else {
+        mobileMenu.classList.add("hidden");
+        menuIcon.classList.remove("hidden");
+        closeIcon.classList.add("hidden");
+      }
+    });
+  }
+
+  // Setup on page load and astro page transitions
+  initNavbar();
+  document.addEventListener("astro:page-load", initNavbar);
+</script>
