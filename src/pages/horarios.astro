@@ -64,8 +64,8 @@ import { Activity, Clock } from "lucide-astro";
                   desc: "Práctica de combate controlada",
                 },
               ].map((item) => (
-                <div class="flex border-b border-zinc-900 last:border-0 hover:bg-zinc-900/50 transition-colors">
-                  <div class="w-32 bg-zinc-900/30 p-4 flex items-center justify-center border-r border-zinc-900">
+                <div class="flex flex-col sm:flex-row border-b border-zinc-900 last:border-0 hover:bg-zinc-900/50 transition-colors">
+                  <div class="w-full sm:w-32 bg-zinc-900/30 py-2 px-4 sm:p-4 flex items-center justify-start sm:justify-center border-b sm:border-b-0 sm:border-r border-zinc-900">
                     <span class="text-lime-400 font-bold uppercase text-sm">
                       {item.day}
                     </span>
@@ -135,7 +135,7 @@ import { Activity, Clock } from "lucide-astro";
                   color: "text-zinc-400 italic",
                 },
               ].map((slot) => (
-                <div class="bg-zinc-950 border border-zinc-800 p-4 rounded flex justify-between items-center hover:border-lime-500/30 transition-all">
+                <div class="bg-zinc-950 border border-zinc-800 p-4 rounded flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 hover:border-lime-500/30 transition-all">
                   <div class="flex items-center gap-3">
                     <div class="bg-zinc-900 p-1.5 rounded text-lime-400">
                       <Clock size={16} />
@@ -146,7 +146,7 @@ import { Activity, Clock } from "lucide-astro";
                   </div>
                   <span
                     class:list={[
-                      "uppercase text-sm tracking-wider",
+                      "uppercase text-sm tracking-wider pl-9 sm:pl-0",
                       slot.color,
                     ]}
                   >
