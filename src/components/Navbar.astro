@@ -17,7 +17,10 @@ const currentPath = Astro.url.pathname;
 
 <nav
   id="main-navbar"
-  class="fixed w-full z-50 transition-all duration-500 border-b border-transparent left-0 top-0 py-6 mt-10 md:mt-12 bg-transparent"
+  class:list={[
+    "fixed w-full z-50 transition-all duration-500 border-b border-transparent left-0 top-0 py-6 mt-10 md:mt-12",
+    currentPath === "/contacto" ? "bg-zinc-950" : "bg-transparent",
+  ]}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center">
@@ -129,10 +132,19 @@ const currentPath = Astro.url.pathname;
     const menuIcon = document.getElementById("menu-icon");
     const closeIcon = document.getElementById("close-icon");
 
-    // Scroll Effect
-    window.addEventListener("scroll", () => {
+    // Normalize path to ignore trailing slash for comparison
+    const currentPath = window.location.pathname.replace(/\/$/, "");
+    const isContactPage = currentPath === "/contacto";
+
+    const updateNavbarStyle = () => {
       if (window.scrollY > 20) {
-        navbar.classList.remove("py-6", "mt-10", "md:mt-12", "bg-transparent");
+        navbar.classList.remove(
+          "py-6",
+          "mt-10",
+          "md:mt-12",
+          "bg-transparent",
+          "bg-zinc-950",
+        );
         navbar.classList.add(
           "py-3",
           "bg-zinc-950/95",
@@ -142,7 +154,15 @@ const currentPath = Astro.url.pathname;
           "shadow-lime-900/10",
         );
       } else {
-        navbar.classList.add("py-6", "mt-10", "md:mt-12", "bg-transparent");
+        navbar.classList.add("py-6", "mt-10", "md:mt-12");
+        if (isContactPage) {
+          navbar.classList.add("bg-zinc-950");
+          navbar.classList.remove("bg-transparent");
+        } else {
+          navbar.classList.add("bg-transparent");
+          navbar.classList.remove("bg-zinc-950");
+        }
+
         navbar.classList.remove(
           "py-3",
           "bg-zinc-950/95",
@@ -152,7 +172,13 @@ const currentPath = Astro.url.pathname;
           "shadow-lime-900/10",
         );
       }
-    });
+    };
+
+    // Scroll Effect
+    window.addEventListener("scroll", updateNavbarStyle);
+
+    // Initial check in case page is reloaded while scrolled
+    updateNavbarStyle();
 
     // Mobile Menu Toggle
     mobileMenuBtn?.addEventListener("click", () => {
